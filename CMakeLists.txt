@@ -6,7 +6,7 @@
 if( UNIX )
   cmake_minimum_required(VERSION 3.27.7)
 else()
-  cmake_minimum_required(VERSION 3.31.3)
+  cmake_minimum_required(VERSION 4.1.2)
 endif()
 
 if (WIN32)
@@ -23,7 +23,12 @@ endif()
 project(Project_Skyfire)
 
 # CMake policies (can not be handled elsewhere)
-cmake_policy(SET CMP0005 OLD)
+if( UNIX )
+# Unix is still operating in legacy mode
+  cmake_policy(SET CMP0005 OLD)
+else()
+  
+endif()
 
 # add this options before PROJECT keyword
 set(CMAKE_DISABLE_SOURCE_CHANGES ON)
